@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.mapper.TeacherMapper">
+
+    <sql id="Base_Column_List">
+        id,username,password,name,gender,photo,job,email,phone
+    </sql>
+
+    <select id="selectAll" resultType="org.example.admin.pojo.Teacher">
+        select
+        <include refid="Base_Column_List" />
+        from Teacher
+        <where>
+            <if test="id!=null"> and id =#{id}</if>
+            <if test="username!=null"> and username =#{username} like concat ("%",#{username},"%")</if>
+            <if test="password!=null"> and password =#{password}</if>
+            <if test="name!=null"> and name =#{password}</if>
+            <if test="gender!=null"> and gender =#{gender}</if>
+            <if test="photo!=null"> and photo =#{photo}</if>
+            <if test="job!=null"> and job =#{job}</if>
+            <if test="email!=null"> and email =#{email}</if>
+            <if test="phone!=null"> and phone =#{phone}</if>
+        </where>
+    </select>
+
+    <select id="selectById" resultType="org.example.admin.pojo.Teacher">
+        select
+        <include refid="Base_Column_List" />
+        from Teacher
+        where id=#{}
+    </select>
+
+    <delete id="deleteById" >
+        delete from Teacher
+        where id =#{id}
+    </delete>
+    
+    <insert id="insert" parameterType="org.example.admin.pojo.Teacher" useGeneratedKeys="true">
+        insert into Teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id!=null"> and id =#{id}</if>
+            <if test="username!=null"> and username =#{username}</if>
+            <if test="password!=null"> and password =#{password}</if>
+            <if test="name!=null"> and name =#{password}</if>
+            <if test="gender!=null"> and gender =#{gender}</if>
+            <if test="photo!=null"> and photo =#{photo}</if>
+            <if test="job!=null"> and job =#{job}</if>
+            <if test="email!=null"> and email =#{email}</if>
+            <if test="phone!=null"> and phone =#{phone}</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id!=null"> and id =#{id}</if>
+            <if test="username!=null"> and username =#{username}</if>
+            <if test="password!=null"> and password =#{password}</if>
+            <if test="name!=null"> and name =#{password}</if>
+            <if test="gender!=null"> and gender =#{gender}</if>
+            <if test="photo!=null"> and photo =#{photo}</if>
+            <if test="job!=null"> and job =#{job}</if>
+            <if test="email!=null"> and email =#{email}</if>
+            <if test="phone!=null"> and phone =#{phone}</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="org.example.admin.pojo.Teacher">
+        update teacher
+        <set>
+            <if test="username!=null">
+                username=#{usename},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="gender!=null">
+                gender=#{gender},
+            </if>
+            <if test="photo!=null">
+                photo=#{photo},
+            </if>
+            <if test="job!=null">
+                job=#{job},
+            </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+        </set>
+        where id =#{id}
+    </update>
+</mapper>
+
+
