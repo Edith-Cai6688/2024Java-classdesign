@@ -1,107 +1,173 @@
 <template>
-  <el-menu  background-color=#1c1d3b  text-color=white active-text-color=#87CEEB >
-        <el-menu-item index="1">
-          <el-icon><location /></el-icon>
+  <el-menu  background-color=#1c1d3b  text-color=white active-text-color=#87CEEB router>
+        <el-menu-item index="home">
+          <el-icon><House /></el-icon>
           <span>系统首页</span>
         </el-menu-item>
-        <el-sub-menu index="2" >
+        <el-sub-menu  v-for="item in li"
+          :index="item.name"
+          :key="item.id">
           <template #title>
-            <el-icon></el-icon>
-            <span>信息公告</span>
+            <el-icon><component :is="item.icon"/> </el-icon>
+            <span>{{item.label}}</span>
           </template >
-            <el-menu-item index="2-1">教务通知</el-menu-item>
-            <el-menu-item index="2-2">考试安排</el-menu-item>
-            <el-menu-item index="2-3">教室安排</el-menu-item>
+            <el-menu-item v-for="item2 in item.children" :index="item2.name" :key="item2.id">
+              <el-icon>
+                <component :is="item2.icon"/>          
+             </el-icon>
+              {{ item2.label }}
+            </el-menu-item>
         </el-sub-menu>
-        <el-sub-menu index="3">
-          <template #title>
-            <el-icon></el-icon>
-            <span>行政管理</span>
-          </template>
-            <el-menu-item index="3-1">学院信息</el-menu-item>
-            <el-menu-item index="3-2">专业信息</el-menu-item>
-            <el-menu-item index="3-2">班级信息</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="4">
-          <template #title>
-            <el-icon></el-icon>
-            <span>教学管理</span>
-          </template>
-            <el-menu-item index="4-1">课程信息</el-menu-item>
-            <el-menu-item index="4-2">我的选课</el-menu-item>
-            <el-menu-item index="4-2">我的成绩</el-menu-item>
-            <el-menu-item index="4-2">网上评教</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="5">
-          <template #title>
-            <el-icon></el-icon>
-            <span>教务管理</span>
-          </template>
-            <el-menu-item index="5-1">请假申请</el-menu-item>
-            <el-menu-item index="5-2">作业提交</el-menu-item>
-            <el-menu-item index="5-2">考勤信息</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="6">
-          <template #title>
-            <el-icon></el-icon>
-            <span>用户管理</span>
-          </template>
-            <el-menu-item index="6-1">管理员信息</el-menu-item>
-            <el-menu-item index="6-2">教师信息</el-menu-item>
-            <el-menu-item index="6-2">学生信息</el-menu-item>
-        </el-sub-menu>
+
       </el-menu>
 </template>
 
 <script>
-    // export default:{
-    //     data(){
-    //         return:{
-    //             [
-    //                 {
-    //                 path: '/home',
-    //                 name: 'home',
-    //                 label: '首页',
-    //                 icon: 'house',
-    //                 url: 'Home'
-    //                 },
-    //                 {
-    //                     path: '/mall',
-    //                     name: 'mall',
-    //                     label: '商品管理',
-    //                     icon: 'video-play',
-    //                     url: 'Mall'
-    //                 },
-    //                 {
-    //                     path: '/user',
-    //                     name: 'user',
-    //                     label: '用户管理',
-    //                     icon: 'user',
-    //                     url: 'User'
-    //                 },
-    //                 {
-    //                     path: 'other',
-    //                     label: '其他',
-    //                     icon: 'location',
-    //                     children: [
-    //                         {
-    //                             path: '/page1',
-    //                             name: 'page1',
-    //                             label: '页面1',
-    //                             icon: 'setting',
-    //                             url: 'Page1'
-    //                         },
-    //                         {
-    //                             path: '/page2',
-    //                             name: 'page2',
-    //                             label: '页面2',
-    //                             icon: 'setting',
-    //                             url: 'Page2'
-    //                         }
-    //                     ]
-    //                 }
-    //         ]
-    //         }
-    //     }
-    // }
+   export default {
+    data()
+      {
+        return{
+          li:[
+          {
+            path:'/info',
+            label:'信息公告',
+            name:'info',
+            icon:"ChatLineSquare",
+            children:[
+              {
+                path:'/note',
+                name:'note',
+                label:'教务通知',
+                icon:"Notification",
+                url:'Note'
+              },
+              {
+                path:'/exam',
+                name:'exam',
+                label:'考试安排',
+                icon:"Calendar",
+                url:'Exam'
+              },
+              {
+                path:'/room',
+                name:'room',
+                label:'教室安排',
+                icon:"ReadingLamp",
+                url:'Room'
+              }
+            ]
+          },
+          {
+            path:'/admin',
+            name:'admin',
+            label:'行政管理',
+            icon:"OfficeBuilding",
+            children:[
+              {
+                path:'/college',
+                name:'college',
+                label:'学院信息',
+                icon:"InfoFilled",
+                url:'College'
+              },
+              {
+                path:'/major',
+                name:'major',
+                label:'专业信息',
+                icon:"Collection",
+                url:'Major'
+              },
+              {
+                path:'/class',
+                name:'class',
+                label:'班级信息',
+                icon:"Reading",
+                url:'Class'
+              }
+            ]
+          },
+          {
+            path:'/teach',
+            name:'teach',
+            label:'教学管理',
+            icon:"Notebook",
+            children:[
+              {
+                path:'/course',
+                name:'course',
+                label:'课程信息',
+                icon:"Suitcase",
+                url:'Course'
+              },
+              {
+                path:'/mycourse',
+                name:'mycourse',
+                label:'我的选课',
+                icon:"Document",
+                url:'Mycourse'
+              },
+              {
+                path:'/grade',
+                name:'grade',
+                label:'我的成绩',
+                icon:"Check",
+                url:'Grade'
+              }
+            ]
+          },
+          {
+            path:'/edu',
+            name:'edu',
+            label:'教务管理',
+            icon:"Files",
+            children:[
+              {
+                path:'/leave',
+                name:'leave',
+                label:'请假申请',
+                icon:"Paperclip",
+                url:'Leave'
+              },
+              {
+                path:'/attendance',
+                name:'attendance',
+                label:'考勤信息',
+                icon:"DataAnalysis",
+                url:'Attendence'
+              }
+            ]
+          },
+          {
+            path:'/user',
+            name:'user',
+            label:'用户管理',
+            icon:"User",
+            children:[
+              {
+                path:'/adminer',
+                name:'adminer',
+                label:'管理员信息',
+                icon:"Avatar",
+                url:'Adminer'
+              },
+              {
+                path:'/teacher',
+                name:'teacher',
+                label:'教师信息',
+                icon:"Avatar",
+                url:'Teacher'
+              },
+              {
+                path:'/stu',
+                name:'stu',
+                label:'学生信息',
+                icon:"Avatar",
+                url:'Stu'
+              }
+            ]
+          }
+        ]
+        }
+      }
+    }
 </script>

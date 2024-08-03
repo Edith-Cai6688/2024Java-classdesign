@@ -85,7 +85,8 @@
 
 <style lang="less" scoped>
     .login_container{
-        background-color:lightsteelblue;
+ //       background-color:lightsteelblue;
+        background-image: url("src/assets/images/ironman_back.png");
         width: 100%;
         height: 100%;
     }
