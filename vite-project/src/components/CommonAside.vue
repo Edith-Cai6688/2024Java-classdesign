@@ -40,20 +40,6 @@
                 label:'教务通知',
                 icon:"Notification",
                 url:'Note'
-              },
-              {
-                path:'/exam',
-                name:'exam',
-                label:'考试安排',
-                icon:"Calendar",
-                url:'Exam'
-              },
-              {
-                path:'/room',
-                name:'room',
-                label:'教室安排',
-                icon:"ReadingLamp",
-                url:'Room'
               }
             ]
           },
@@ -112,57 +98,6 @@
                 label:'我的成绩',
                 icon:"Check",
                 url:'Grade'
-              }
-            ]
-          },
-          {
-            path:'/edu',
-            name:'edu',
-            label:'教务管理',
-            icon:"Files",
-            children:[
-              {
-                path:'/leave',
-                name:'leave',
-                label:'请假申请',
-                icon:"Paperclip",
-                url:'Leave'
-              },
-              {
-                path:'/attendance',
-                name:'attendance',
-                label:'考勤信息',
-                icon:"DataAnalysis",
-                url:'Attendence'
-              }
-            ]
-          },
-          {
-            path:'/user',
-            name:'user',
-            label:'用户管理',
-            icon:"User",
-            children:[
-              {
-                path:'/adminer',
-                name:'adminer',
-                label:'管理员信息',
-                icon:"Avatar",
-                url:'Adminer'
-              },
-              {
-                path:'/teacher',
-                name:'teacher',
-                label:'教师信息',
-                icon:"Avatar",
-                url:'Teacher'
-              },
-              {
-                path:'/stu',
-                name:'stu',
-                label:'学生信息',
-                icon:"Avatar",
-                url:'Stu'
               }
             ]
           }

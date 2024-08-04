@@ -37,16 +37,16 @@
         <el-input v-model="input" style="width: 240px" placeholder="请输入标题查询" />
         <el-button type="primary" plain style="margin-left: 15px;" @click="query">查询</el-button>
         <el-button type="info" plain @click="restart">重置</el-button>
-    </el-card>            
+    </el-card>       
     <el-card style="height: auto;">
         <el-table :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)" :default-sort="{ property: 'number', order: 'descending' }" style="width: 100%" :cell-style="{ textAlign: 'center' }"
         :header-cell-style="{ textAlign: 'center' }">
             <el-table-column type="selection" width="55" />
             <el-table-column property="number" label="序号" sortable width="120" />
-            <el-table-column property="title" label="标题" width="240" />
-            <el-table-column property="content" label="内容" width="300"/>
-            <el-table-column property="person" label="创建人" width="200"/>
-            <el-table-column property="time" label="创建时间" width="200"/>
+            <el-table-column property="title" label="班级名称" width="240" />
+            <el-table-column property="content" label="班级描述" width="300"/>
+            <el-table-column property="person" label="班主任" width="200"/>
+            <el-table-column property="major" label="所属专业" width="200"/>
         </el-table>
         <el-pagination
             @size-change="handleSizeChange"
@@ -83,147 +83,14 @@ import { ElMessage } from 'element-plus';
                     title:'xxx',
                     content:'xxx',
                     person:'111',
-                    time:'111'
+                    major:'111'
                 },
                 {
                     number:'2',
                     title:'sss',
                     content:'xxx',
                     person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
-                },
-                {
-                    number:'1',
-                    title:'xxx',
-                    content:'xxx',
-                    person:'111',
-                    time:'111'
+                    major:'111'
                 }
                 
             ]

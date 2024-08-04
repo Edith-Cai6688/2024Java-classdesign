@@ -3,10 +3,15 @@ import login from "@/views/Login.vue"
 import home from "@/views/Home.vue"
 import component from "element-plus/es/components/tree-select/src/tree-select-option.mjs";
 import note from "@/components/note.vue"
-import exam from "@/components/exam.vue"
-import room from "@/components/room.vue"
 import main from "@/components/main.vue"
+import college from "@/components/college.vue"
+import major from "@/components/major.vue"
+import classer from "@/components/classer.vue"
+import course from "@/components/course.vue"
+import mycourse from "@/components/mycourse.vue"
+import grade from "@/components/grade.vue"
 import "@/components/CommonHeader.vue"
+import Course from "../components/course.vue";
 const routes=[
     {
         path:"/",redirect:"/login"
@@ -27,15 +32,35 @@ const routes=[
                 component:note,
             },
             {
-                path:"/exam",
-                name:"考试安排",
-                component:exam
+                path:"/college",
+                name:"学院信息",
+                component:college,
             },
             {
-                path:"/room",
-                name:"教室安排",
-                component:room
+                path:"/major",
+                name:"专业信息",
+                component:major
             },
+            {
+                path:"/class",
+                name:"班级信息",
+                component:classer
+            },
+            {
+                path:"/course",
+                name:"课程信息",
+                component:course
+            },
+            {
+                path:"/mycourse",
+                name:"我的选课",
+                component:mycourse
+            },
+            {
+                path:"/grade",
+                name:"我的成绩",
+                component:grade
+            }
         ]
     },
     

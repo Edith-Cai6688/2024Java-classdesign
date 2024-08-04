@@ -19,10 +19,9 @@ export default{
 }
 </script>
 <template>
-    <div class="common-layout" >
-    <el-container >
+    <el-container  class="common-layout">
         <el-header class="el-header"><CommonHeader :childf="back"/></el-header>
-      <el-container>
+      <el-container class="container">
         <div class="sidebar">
             <CommonAside/>
         </div>
@@ -31,22 +30,21 @@ export default{
         </el-main>
       </el-container>
     </el-container>
-  </div>
 </template>
 <style scoped lang="less">
     .common-layout{
-        height:100vh;
+        height: 100%;
     }
     .sidebar{
-        height:100vh;
+        // height:100vh;
         width:180px;
         background-color: #1c1d3b;
     }
     .el-header{
         background-color: #383973;
     }
-    .main{
-        background-color: #d1d2e6;
+    .main{  
+        // height: 100%;
+        background-color: #d3d0f0f5
     }
-   
 </style>
