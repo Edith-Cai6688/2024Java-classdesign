@@ -4,83 +4,56 @@
             <div class="avatar_box">
                 <img src="@/assets/images/ironman.png" alt="">
             </div>
-            <el-form  :model="loginform" class="login_form">
-                <el-form-item >
-                <el-input v-model="loginform.username">
+            <el-form ref="formRef" :model="loginform" :rules="rules" class="login_form">
+                <el-form-item prop="username" >
+                <el-input v-model="loginform.username" >
                     <template #prefix>
                         <el-icon><el-icon><el-icon><User /></el-icon></el-icon></el-icon>
                     </template>
                 </el-input>
                 </el-form-item>
-                <el-form-item >
+                <el-form-item prop="password">
                 <el-input v-model="loginform.password" type="password">
                     <template #prefix>
                         <el-icon><el-icon><Lock /></el-icon></el-icon>
                     </template>
                 </el-input>
                 </el-form-item>
-                <el-form-item>
-                    <el-select
-                    v-model="options.value"
-                    placeholder="Select"
-                    style="width: 100%"
-                    >
-                    <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    />
-                    </el-select>
-                </el-form-item>
                 <el-form-item class="btns">
-                    <div><el-button  type="primary" @click="login()">登录</el-button></div>
+                    <div><el-button  type="primary" @click="login">登录</el-button></div>
                 </el-form-item>
             </el-form>
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
+    import{reactive,ref}from "vue"
     import { ElMessage } from 'element-plus'; 
-    export default{
-        data(){
-            return{
-                loginform:{
-                    username:"",
-                    password:""
-                },
-                options:[
-                    {
-                        value:'1',
-                        label:'管理员'
-                    },
-                    {
-                        value:'2',
-                        label:'教师'
-                    },
-                    {
-                        value:'3',
-                        label:'学生'
-                    }
-                ]
-            }
-        },
-        methods:{
-            login(){
-                console.log(this);
-                if(this.loginform.username==="cyt" && this.loginform.password==="123456" && this.options.value==='3'){
-                    this.$router.push("/home")
-                    ElMessage({
-                        message: 'Congrats, 密码正确！',
-                        type: 'success',
-                    })
-                }else{
-                        ElMessage.error('Oops,密码错误!')
-                    }
+
+    const formRef=ref(null);
+    const loginform=reactive({
+        username:"",
+        password:""
+    })
+
+   
+    const rules={
+        username:[{required:true,message:"请输入用户名",trigger:'blur'}],
+        password:[{required:true,message:"请输入密码",trigger:'blur'}]
+    }
+    
+    const login=()=>{
+        formRef.value.validate(valid=>{
+            if(valid){
+                console.log("success!");
             }
         }
-    };
+
+        )
+    }
+        
+    
 </script>
 
 <style lang="less" scoped>
