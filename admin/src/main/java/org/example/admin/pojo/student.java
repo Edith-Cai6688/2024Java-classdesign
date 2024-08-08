@@ -7,13 +7,16 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Teacher {
-    private short teacherId;
+@AllArgsConstructor
+public class student {
+    private short stuId;
     private String name;
-    private short departId;
     private String account;
     private String password;
-    private LocalDateTime createTime;
+    private short gender;//1是男，2是女
+    private short classnumber;
+    private short majorId;
+    private short departId;
+    private LocalDateTime updateTime;
 }

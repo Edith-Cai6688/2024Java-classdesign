@@ -20,7 +20,7 @@
                 </el-input>
                 </el-form-item>
                 <el-form-item class="btns">
-                    <div><el-button  type="primary" @click="login">登录</el-button></div>
+                    <div><el-button  type="primary" @click="submit">登录</el-button></div>
                 </el-form-item>
             </el-form>
         </div>
@@ -29,6 +29,7 @@
 
 <script setup>
     import{reactive,ref}from "vue"
+    import login from "@/api/user.js"
     import { ElMessage } from 'element-plus'; 
 
     const formRef=ref(null);
@@ -43,9 +44,21 @@
         password:[{required:true,message:"请输入密码",trigger:'blur'}]
     }
     
-    const login=()=>{
+
+    const submit=()=>{
         formRef.value.validate(valid=>{
             if(valid){
+                this.$axios.post()
+                
+                if(res/code==200){
+                    ElMessage({
+                        message:"登陆成功",
+                        type:'success'                   
+                    });
+                    this.$router.push('/home');
+                }else{
+                    ElMessage.error('账号密码错误')
+                }
                 console.log("success!");
             }
         }
