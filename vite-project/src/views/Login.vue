@@ -6,7 +6,7 @@
             </div>
             <el-form ref="formRef" :model="loginform" :rules="rules" class="login_form">
                 <el-form-item prop="username" >
-                <el-input v-model="loginform.username" >
+                <el-input v-model="loginform.account" >
                     <template #prefix>
                         <el-icon><el-icon><el-icon><User /></el-icon></el-icon></el-icon>
                     </template>
@@ -29,37 +29,55 @@
 
 <script setup>
     import{reactive,ref}from "vue"
-    import login from "@/api/user.js"
-    import { ElMessage } from 'element-plus'; 
-
+    import { ElMessage } from 'element-plus';
+    import axios from "axios";
+    import router from "@/router/index.js"
     const formRef=ref(null);
     const loginform=reactive({
-        username:"",
+        account:"",
         password:""
     })
 
-   
+
     const rules={
-        username:[{required:true,message:"请输入用户名",trigger:'blur'}],
+        account:[{required:true,message:"请输入用户名",trigger:'blur'}],
         password:[{required:true,message:"请输入密码",trigger:'blur'}]
     }
     
 
     const submit=()=>{
-        formRef.value.validate(valid=>{
+        formRef.value.validate((valid)=>{
             if(valid){
-                this.$axios.post()
-                
-                if(res/code==200){
-                    ElMessage({
-                        message:"登陆成功",
-                        type:'success'                   
+                    const res=axios.post('/api/login',
+                        {
+                            account:loginform.account,
+                            password:loginform.password
+                        },
+                        {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        }
+                    )
+                    .then(function(res){                
+                        console.log(res);
+                        if(res.data.code===1){
+                            ElMessage({
+                            message:"登陆成功",
+                            type:'success'                   
+                            });
+                            router.push('/home');
+                        }else{
+                            ElMessage.error('账号密码错误')
+                        }
+                    }
+                    )
+                    .catch(function(error){
+                        console.log(error);
                     });
-                    this.$router.push('/home');
-                }else{
-                    ElMessage.error('账号密码错误')
-                }
-                console.log("success!");
+                    console.log(res);
+    
+                
             }
         }
 
