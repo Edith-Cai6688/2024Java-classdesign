@@ -14,9 +14,9 @@ public class student {
     private String name;
     private String account;
     private String password;
-    private short gender;//1是男，2是女
+    private String gender;
     private short classnumber;
-    private short majorId;
-    private short departId;
+    private String majorId;
+    private String departId;
     private LocalDateTime updateTime;
 }

@@ -14,14 +14,14 @@ public class jwtUtils {
 
     public static String generateToken(Map<String, Object> claims) {
         String token = Jwts.builder()
-                .addClaims(claims)
-                .signWith(SignatureAlgorithm.HS256,signKey)
+                .setClaims(claims)
+                .signWith(SignatureAlgorithm.HS512, signKey)
                 .setExpiration(new Date(System.currentTimeMillis()+expire))
                 .compact();
         return token;
     }
 
-    public static Map<String, Object> parseToken(String token) {
+    public static Claims parseToken(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(signKey)
                 .parseClaimsJws(token)

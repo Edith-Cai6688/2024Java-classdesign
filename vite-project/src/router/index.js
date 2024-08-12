@@ -48,7 +48,7 @@ const routes=[
             },
             {
                 path:"/course",
-                name:"课程信息",
+                name:"选课中心",
                 component:course
             },
             {
@@ -78,4 +78,11 @@ const router=createRouter(
         history:createWebHashHistory()
     }
 )
+
+router.beforeEach((to,from,next)=>{
+    if(to.path==='/login')return next();
+    const token =window.localStorage.getItem("token");
+    if(!token) return next('/login');
+    next();
+})
 export default router;

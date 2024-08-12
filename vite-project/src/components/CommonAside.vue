@@ -4,6 +4,10 @@
           <el-icon><House /></el-icon>
           <span>系统首页</span>
         </el-menu-item>
+        <el-menu-item index="note">
+          <el-icon><Notification /></el-icon>
+          <span>教务通知</span>
+        </el-menu-item>
         <el-sub-menu  v-for="item in li"
           :index="item.name"
           :key="item.id">
@@ -29,50 +33,6 @@
         return{
           li:[
           {
-            path:'/info',
-            label:'信息公告',
-            name:'info',
-            icon:"ChatLineSquare",
-            children:[
-              {
-                path:'/note',
-                name:'note',
-                label:'教务通知',
-                icon:"Notification",
-                url:'Note'
-              }
-            ]
-          },
-          {
-            path:'/admin',
-            name:'admin',
-            label:'行政管理',
-            icon:"OfficeBuilding",
-            children:[
-              {
-                path:'/college',
-                name:'college',
-                label:'学院信息',
-                icon:"InfoFilled",
-                url:'College'
-              },
-              {
-                path:'/major',
-                name:'major',
-                label:'专业信息',
-                icon:"Collection",
-                url:'Major'
-              },
-              {
-                path:'/class',
-                name:'class',
-                label:'班级信息',
-                icon:"Reading",
-                url:'Class'
-              }
-            ]
-          },
-          {
             path:'/teach',
             name:'teach',
             label:'教学管理',
@@ -81,7 +41,7 @@
               {
                 path:'/course',
                 name:'course',
-                label:'课程信息',
+                label:'选课中心',
                 icon:"Suitcase",
                 url:'Course'
               },

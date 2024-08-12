@@ -42,20 +42,16 @@
         <el-table :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)" :default-sort="{ property: 'number', order: 'descending' }" style="width: 100%" :cell-style="{ textAlign: 'center' }"
         :header-cell-style="{ textAlign: 'center' }">
             <el-table-column type="selection" width="55" />
-            <el-table-column property="number" label="序号" sortable width="80" />
-            <el-table-column property="name" label="课程名称" width="120" />
-            <el-table-column property="class" label="课程类型" width="120"/>
-            <el-table-column property="teacher" label="授课老师" width="80"/>
-            <el-table-column property="credit" label="学分" width="80"/>
-            <el-table-column property="total" label="上课人数" width="80"/>
-            <el-table-column property="room" label="上课教室" width="80"/>
-            <el-table-column property="weekday" label="周几" width="80"/>
-            <el-table-column property="time" label="第几大节" width="80"/>
-            <el-table-column property="status" label="上课状态" width="130"/>
-            <el-table-column label="操作" width="240" >
-                <div style="display: flex; justify-content:flex-start;">
-                    <el-button type="success" plain @click="dialogFormVisible = true">取消选课</el-button>
-                </div>
+            <el-table-column property="courseId" label="序号" sortable width="80" />
+            <el-table-column property="name" label="课程名称" width="160" />
+            <el-table-column property="teacherId" label="授课老师" width="120"/>
+            <el-table-column property="credit" label="学分" width="120"/>
+            <el-table-column property="time" label="上课时间" width="160"/>
+            <el-table-column property="place" label="上课教室" width="160"/>
+            <el-table-column label="操作" width="240">
+                <template #default="scope">
+                    <el-button type="success" @click="deleteClass(scope.row)">取消选课</el-button>
+                 </template>
             </el-table-column>
         </el-table>
         <el-pagination
@@ -74,6 +70,7 @@
 
 <script>
 import { ElMessage } from 'element-plus'; 
+import axios from 'axios';
     export default{
         data(){
             return{
@@ -88,23 +85,24 @@ import { ElMessage } from 'element-plus';
                 pagesize:10,
                 tempData:'',
                 tableData:[
-                {
-                    number:'1',
-                    name:'xxx',
-                    class:'xxx',
-                    teacher:'111',
-                    credit:'111',
-                    total:'111',
-                    room:'111',
-                    weekday:'111',
-                    time:'111',
-                    status:'111'
-                }
-                
-            ]
+                    {}
+                ]
             }
         },
         methods:{
+            deleteClass(row){
+                axios.post('/api/deleteClass',
+                {
+                    courseId:row.courseId
+                },
+                {
+                headers: {
+                    token:localStorage.getItem('token')
+                }
+            }
+            );
+            location.reload();
+            },
             query()
             {
                 if(this.tempData!==''){
@@ -131,9 +129,23 @@ import { ElMessage } from 'element-plus';
                     this.currentPage = currentPage;
                     console.log(this.currentPage)  //点击第几页
             }},
-        watch:{
-                
+            created(){
+            axios.get('/api/mycourse',
+            {
+                headers: {
+                    token:localStorage.getItem('token')
+                }
             }
+            )
+            .then(res=>{
+                this.tableData=res.data.data;
+                console.log(res);
+                console.log(this.tableData);
+            }).catch((error)=>{
+                console.log(error);
+            });
+
+        }
                 
     }
 </script>

@@ -31,7 +31,7 @@
     import{reactive,ref}from "vue"
     import { ElMessage } from 'element-plus';
     import axios from "axios";
-    import router from "@/router/index.js"
+    import router from "@/router/index.js";
     const formRef=ref(null);
     const loginform=reactive({
         account:"",
@@ -66,6 +66,7 @@
                             message:"登陆成功",
                             type:'success'                   
                             });
+                            localStorage.setItem("token", res.data.data);
                             router.push('/home');
                         }else{
                             ElMessage.error('账号密码错误')

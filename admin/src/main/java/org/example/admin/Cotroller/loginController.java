@@ -29,6 +29,12 @@ public class loginController {
             Map<String,Object> claims=new HashMap<>();
             claims.put("id",s.getStuId());
             claims.put("name",s.getName());
+            claims.put("account",s.getAccount());
+            claims.put("password",s.getPassword());
+            claims.put("classNumber",s.getClassnumber());
+            claims.put("major",s.getMajorId());
+            claims.put("depart",s.getDepartId());
+            claims.put("gender",s.getGender());
             String token=jwtUtils.generateToken(claims);
             return result.success(token);
         }

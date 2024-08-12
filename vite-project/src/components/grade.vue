@@ -44,13 +44,12 @@
         :header-cell-style="{ textAlign: 'center' }">
             <el-table-column type="selection" width="55" />
             <el-table-column property="number" label="序号" sortable width="120" />
-            <el-table-column property="name" label="课程名称" width="180" />
-            <el-table-column property="class" label="课程类型" width="180"/>
-            <el-table-column property="teacher" label="授课老师" width="120"/>
-            <el-table-column property="credit" label="学分" width="120"/>
+            <el-table-column property="name" label="课程名称" width="220" />
+            <el-table-column property="teacher" label="授课老师" width="180"/>
+            <el-table-column property="credit" label="学分" width="160"/>
             <el-table-column property="routine" label="平时分" width="120"/>
             <el-table-column property="final" label="期末分" width="120"/>
-            <el-table-column property="score" label="总分" width="120"/>
+            <el-table-column property="score" label="总分" width="160"/>
         </el-table>
         <el-pagination
             @size-change="handleSizeChange"
@@ -84,13 +83,120 @@ import { ElMessage } from 'element-plus';
                 tableData:[
                 {
                     number:'1',
-                    name:'xxx',
-                    class:'xxx',
-                    teacher:'111',
-                    credit:'111',
-                    routine:'111',
-                    final:'111',
-                    score:'111'
+                    name:'电路原理',
+                    teacher:'王小明',
+                    credit:'3',
+                    routine:'70',
+                    final:'80',
+                    score:'85'
+                },
+                {
+                    number:'2',
+                    name:'c++',
+                    teacher:'章雨来',
+                    credit:'5',
+                    routine:'90',
+                    final:'80',
+                    score:'95'
+                },
+                {
+                    number:'3',
+                    name:'c语言',
+                    teacher:'黎美',
+                    credit:'4',
+                    routine:'79',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'4',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'5',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'6',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'7',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'8',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'9',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'10',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'11',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'12',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
+                },
+                {
+                    number:'13',
+                    name:'python',
+                    teacher:'秦马',
+                    credit:'3',
+                    routine:'68',
+                    final:'89',
+                    score:'90'
                 }
             ]
             }
