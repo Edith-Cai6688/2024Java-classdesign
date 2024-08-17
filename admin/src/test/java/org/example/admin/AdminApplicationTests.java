@@ -23,7 +23,7 @@ class AdminApplicationTests {
         claims.put("username", "Tom");
         String jwt = Jwts.builder()
                 .setClaims(claims) //自定义内容(载荷)
-                .signWith(SignatureAlgorithm.HS256, "itheima") //签名算法
+                .signWith(SignatureAlgorithm.HS256, "stank") //签名算法
                 .setExpiration(new Date(System.currentTimeMillis() +
                         24 * 3600 * 1000)) //有效期
                 .compact();
